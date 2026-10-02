@@ -1,0 +1,1308 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Artistas Favoritos - Música Mexicana</title>
+
+<style>
+
+*{
+    box-sizing:border-box;
+}
+
+body{
+    margin:0;
+    padding:0;
+    background:linear-gradient(135deg,#06145c,#003cff,#07175f);
+    font-family:Arial,Helvetica,sans-serif;
+    color:white;
+}
+
+header{
+    text-align:center;
+    padding:28px 15px 20px;
+}
+
+header h1{
+    margin:0;
+    color:#fff36a;
+    font-family:Georgia,serif;
+    font-size:32px;
+    text-transform:uppercase;
+}
+
+header p{
+    font-size:15px;
+}
+
+nav{
+    width:90%;
+    margin:0 auto 25px;
+    padding:8px;
+    border:2px solid white;
+    display:grid;
+    grid-template-columns:repeat(4,1fr);
+    gap:6px;
+}
+
+nav a{
+    color:white;
+    text-align:center;
+    padding:10px;
+    border:1px solid white;
+    text-decoration:underline;
+    font-weight:bold;
+}
+
+nav a:hover{
+    background:white;
+    color:#06145c;
+}
+
+.contenedor{
+    width:95%;
+    max-width:1250px;
+    margin:auto;
+}
+
+.introduccion{
+    text-align:center;
+    margin-bottom:25px;
+}
+
+.introduccion h2{
+    color:#fff36a;
+}
+
+.tabla-musica{
+    width:100%;
+    border-collapse:collapse;
+    table-layout:fixed;
+}
+
+.tabla-musica th{
+    background:#f4f4f4;
+    color:#df3030;
+    padding:14px 5px;
+    border:2px solid #123fae;
+    font-size:15px;
+}
+
+.tabla-musica td{
+    border:2px solid #174cc7;
+    padding:10px;
+    vertical-align:top;
+}
+
+.artista{
+    text-align:center;
+}
+
+.artista img{
+    width:150px;
+    height:150px;
+    object-fit:cover;
+    display:block;
+    margin:5px auto 10px;
+    border:3px solid white;
+}
+
+.artista h2{
+    font-size:20px;
+    margin:5px 0;
+    color:white;
+}
+
+.informacion{
+    font-size:13px;
+    line-height:1.45;
+    text-align:left;
+}
+
+.informacion h3{
+    color:#fff36a;
+    font-size:15px;
+}
+
+.informacion p{
+    text-align:left;
+}
+
+.informacion ul{
+    padding-left:20px;
+}
+
+.datos{
+    border:1px solid white;
+    padding:8px;
+    margin-top:10px;
+}
+
+.datos p{
+    margin:4px 0;
+}
+
+.video{
+    text-align:center;
+}
+
+.video h3{
+    color:#fff36a;
+    font-size:14px;
+}
+
+.video iframe{
+    width:100%;
+    height:180px;
+    border:0;
+    background:#111;
+}
+
+.video a{
+    display:block;
+    margin-top:10px;
+    padding:8px;
+    border:1px solid white;
+    color:white;
+    text-decoration:none;
+    font-weight:bold;
+}
+
+.video a:hover{
+    background:white;
+    color:#06145c;
+}
+
+.audio{
+    text-align:center;
+}
+
+.audio h3{
+    color:#fff36a;
+    font-size:14px;
+}
+
+.audio audio{
+    width:100%;
+    margin-top:10px;
+}
+
+.audio p{
+    font-size:13px;
+    font-weight:bold;
+}
+
+.spotify{
+    display:block;
+    background:#1DB954;
+    color:white;
+    padding:10px 8px;
+    border-radius:25px;
+    text-decoration:none;
+    font-weight:bold;
+    margin:15px auto;
+    width:95%;
+}
+
+.spotify:hover{
+    background:#159447;
+}
+
+.spotify span{
+    font-size:20px;
+}
+
+.radio{
+    text-align:center;
+}
+
+.radio h3{
+    color:#fff36a;
+    font-size:14px;
+}
+
+.radio-box{
+    border:2px solid white;
+    padding:12px 5px;
+    margin-top:10px;
+}
+
+.radio-box p{
+    font-weight:bold;
+    font-size:12px;
+}
+
+.radio-box a{
+    display:block;
+    background:#101b5c;
+    border:1px solid white;
+    color:#fff36a;
+    padding:8px;
+    text-decoration:none;
+    font-weight:bold;
+}
+
+.radio-box a:hover{
+    background:white;
+    color:#06145c;
+}
+
+.informacion-general{
+    margin-top:30px;
+    padding:20px;
+    border-top:2px solid white;
+    text-align:center;
+}
+
+.informacion-general h2{
+    color:#fff36a;
+}
+
+.informacion-general p{
+    line-height:1.6;
+}
+
+.botones-finales{
+    display:flex;
+    justify-content:center;
+    flex-wrap:wrap;
+    gap:8px;
+    margin:20px 0;
+}
+
+.boton-final{
+    color:white;
+    border:1px solid white;
+    padding:10px 18px;
+    text-decoration:underline;
+    font-weight:bold;
+}
+
+.boton-final:hover{
+    background:white;
+    color:#06145c;
+}
+
+footer{
+    text-align:center;
+    border-top:2px solid white;
+    padding:20px;
+    margin-top:25px;
+    font-size:13px;
+}
+
+@media(max-width:900px){
+
+    .tabla-musica{
+        display:block;
+        overflow-x:auto;
+    }
+
+    .tabla-musica th,
+    .tabla-musica td{
+        min-width:190px;
+    }
+
+    nav{
+        grid-template-columns:1fr 1fr;
+    }
+}
+
+</style>
+
+</head>
+
+
+<body>
+
+
+<header>
+
+<h1>
+MI MÚSICA Y ARTISTAS FAVORITOS
+</h1>
+
+<p>
+Conoce la trayectoria y música de grandes artistas mexicanos
+</p>
+
+</header>
+
+
+<nav>
+
+<a href="#musica">
+MÚSICA
+</a>
+
+<a href="#videos">
+VIDEOS
+</a>
+
+<a href="#radio">
+RADIO
+</a>
+
+<a href="#artistas">
+ARTISTAS
+</a>
+
+</nav>
+
+
+<div class="contenedor">
+
+
+<section class="introduccion" id="musica">
+
+<h2>
+Artistas de música mexicana
+</h2>
+
+<p>
+En esta página se presentan cuatro artistas relacionados
+con la nueva generación de la música mexicana y los
+corridos tumbados. Cada sección contiene información
+sobre su trayectoria, estilo musical, principales
+canciones y características de su carrera artística.
+</p>
+
+<p>
+Selecciona cualquiera de los artistas del menú para
+conocer información más detallada.
+</p>
+
+</section>
+
+
+<table class="tabla-musica" id="artistas">
+
+<thead>
+
+<tr>
+
+<th>ARTISTA</th>
+<th>INFORMACIÓN</th>
+<th>VIDEO</th>
+<th>AUDIO</th>
+<th>ESTACIÓN DE RADIO</th>
+
+</tr>
+
+</thead>
+
+
+<tbody>
+
+
+<!-- ==================================================
+     JUNIOR H
+================================================== -->
+
+<tr id="junior">
+
+<td class="artista">
+
+<img src="juniorh.jfif" alt="Junior H">
+
+<h2>
+JUNIOR H
+</h2>
+
+<p>
+Cantante, compositor y músico mexicano
+</p>
+
+</td>
+
+
+<td class="informacion">
+
+<h3>
+¿Quién es Junior H?
+</h3>
+
+<p>
+Junior H es el nombre artístico de Antonio
+Herrera Pérez, cantante y compositor mexicano
+asociado principalmente con los corridos
+tumbados. Su propuesta combina elementos de la
+música regional mexicana con sonidos y formas
+contemporáneas.
+</p>
+
+<p>
+Desde una etapa temprana mostró interés por la
+música y comenzó a desarrollar habilidades
+relacionadas con la guitarra y la composición.
+Con el tiempo, su estilo se incorporó a la nueva
+generación de artistas que renovaron la forma de
+presentar el corrido mexicano.
+</p>
+
+<h3>
+Trayectoria musical
+</h3>
+
+<p>
+Junior H comenzó a ganar reconocimiento dentro
+de la escena de los corridos tumbados gracias a
+sus canciones y a su manera particular de
+interpretar historias con un enfoque más
+contemporáneo.
+</p>
+
+<p>
+Su carrera también se ha desarrollado mediante
+colaboraciones con otros representantes de la
+música mexicana. Su trabajo ayudó a consolidar
+una generación de artistas jóvenes que llevaron
+este estilo a públicos más amplios.
+</p>
+
+<h3>
+Estilo musical
+</h3>
+
+<ul>
+
+<li>Corridos tumbados</li>
+<li>Música regional mexicana</li>
+<li>Influencias urbanas</li>
+<li>Composición contemporánea</li>
+
+</ul>
+
+<h3>
+Características de su música
+</h3>
+
+<p>
+Sus canciones suelen utilizar guitarras y
+estructuras relacionadas con el corrido,
+mientras que las letras y la producción buscan
+conectar con las experiencias y gustos de
+públicos jóvenes.
+</p>
+
+<div class="datos">
+
+<p>
+<strong>Nombre artístico:</strong> Junior H
+</p>
+
+<p>
+<strong>Nombre:</strong> Antonio Herrera Pérez
+</p>
+
+<p>
+<strong>País:</strong> México
+</p>
+
+<p>
+<strong>Género:</strong> Corridos tumbados
+</p>
+
+<p>
+<strong>Instrumento asociado:</strong> Guitarra
+</p>
+
+</div>
+
+</td>
+
+
+<td class="video" id="videos">
+
+<h3>
+VIDEO DE UNA CANCIÓN
+</h3>
+
+<iframe
+src="https://www.youtube.com/embed/BFC7AvjXwjU"
+title="Junior H - Psicodelica"
+allowfullscreen>
+</iframe>
+
+<a
+href="https://www.youtube.com/results?search_query=Junior+H"
+target="_blank">
+
+VER MÁS VIDEOS
+
+</a>
+
+</td>
+
+
+
+<td class="audio">
+
+<h3>
+AUDIO
+</h3>
+
+<audio controls>
+
+<source src="extssy-model.mp3.mp3" type="audio/mpeg">
+
+Tu navegador no puede reproducir este audio.
+
+</audio>
+
+<p>
+Junior H - Extssy Model
+</p>
+
+<a
+class="spotify"
+href="https://open.spotify.com/track/24teIhDYO2RocTA2v5dY0r"
+target="_blank">
+
+<span>●</span>
+ESCUCHAR EN SPOTIFY
+
+</a>
+
+</td>
+
+
+<td class="radio" id="radio">
+
+<h3>
+RADIO
+</h3>
+
+<div class="radio-box">
+
+<p>
+RADIO JUNIOR H
+</p>
+
+<a
+href="https://open.spotify.com/artist/7Gi6gjaWy3DxyilpF1a8Is"
+target="_blank">
+
+ESCUCHAR JUNIOR H
+
+</a>
+
+</div>
+
+</td>
+
+</tr>
+
+
+
+<!-- ==================================================
+     PESO PLUMA
+================================================== -->
+
+<tr id="peso">
+
+<td class="artista">
+
+<img src="pesopluma.jfif" alt="Peso Pluma">
+
+<h2>
+PESO PLUMA
+</h2>
+
+<p>
+Cantante, compositor y productor mexicano
+</p>
+
+</td>
+
+
+<td class="informacion">
+
+<h3>
+¿Quién es Peso Pluma?
+</h3>
+
+<p>
+Peso Pluma es el nombre artístico de Hassan
+Emilio Kabande Laija, cantante y compositor
+mexicano relacionado con la música regional
+mexicana, los corridos tumbados y diferentes
+sonidos urbanos.
+</p>
+
+<p>
+Durante su adolescencia comenzó a aprender a
+tocar la guitarra y desarrolló interés por la
+composición. Con el paso del tiempo construyó una
+identidad musical que combina elementos
+tradicionales mexicanos con influencias
+contemporáneas.
+</p>
+
+<h3>
+Trayectoria
+</h3>
+
+<p>
+Su carrera profesional comenzó a desarrollarse
+durante la década de 2020. Posteriormente,
+diferentes colaboraciones y lanzamientos
+contribuyeron a que su música alcanzara una
+audiencia internacional.
+</p>
+
+<p>
+Uno de los aspectos importantes de su trayectoria
+ha sido la colaboración con distintos artistas
+de la música regional mexicana y de otros
+géneros. Entre sus trabajos conocidos se
+encuentran colaboraciones como "Ella Baila Sola"
+y "AMG".
+</p>
+
+<h3>
+Estilo musical
+</h3>
+
+<ul>
+
+<li>Corridos tumbados</li>
+<li>Música regional mexicana</li>
+<li>Música urbana</li>
+<li>Trap latino</li>
+<li>Sierreño urbano</li>
+
+</ul>
+
+<h3>
+Aportación musical
+</h3>
+
+<p>
+Su carrera representa una de las conexiones más
+visibles entre la música regional mexicana y
+diferentes sonidos urbanos. Sus colaboraciones
+también han ayudado a que el corrido llegue a
+públicos que anteriormente consumían otros
+estilos musicales.
+</p>
+
+<div class="datos">
+
+<p>
+<strong>Nombre artístico:</strong> Peso Pluma
+</p>
+
+<p>
+<strong>Nombre:</strong> Hassan Emilio Kabande Laija
+</p>
+
+<p>
+<strong>País:</strong> México
+</p>
+
+<p>
+<strong>Géneros:</strong> Regional mexicano y corridos tumbados
+</p>
+
+<p>
+<strong>Instrumento:</strong> Guitarra
+</p>
+
+</div>
+
+</td>
+
+
+<td class="video">
+
+<h3>
+VIDEO DE UNA CANCIÓN
+</h3>
+
+<a
+href="https://www.youtube.com/results?search_query=Peso+Pluma+Ella+Baila+Sola"
+target="_blank">
+
+▶ VER VIDEO DE PESO PLUMA
+
+</a>
+
+</td>
+
+
+<td class="audio">
+
+<h3>
+AUDIO
+</h3>
+
+<audio controls>
+
+<source src="ella-baila-sola.mp3.mp3" type="audio/mpeg">
+
+Tu navegador no puede reproducir este audio.
+
+</audio>
+
+<p>
+Peso Pluma - Ella Baila Sola
+</p>
+
+<a
+class="spotify"
+href="https://open.spotify.com/track/3dnP0JxCgygwQH9Gm7q7nb"
+target="_blank">
+
+<span>●</span>
+ESCUCHAR EN SPOTIFY
+
+</a>
+
+</td>
+
+
+<td class="radio">
+
+<h3>
+RADIO
+</h3>
+
+<div class="radio-box">
+
+<p>
+RADIO PESO PLUMA
+</p>
+
+<a
+href="https://open.spotify.com/artist/12GqGscKJx3aE4t07u7eVZ"
+target="_blank">
+
+ESCUCHAR PESO PLUMA
+
+</a>
+
+</div>
+
+</td>
+
+</tr>
+
+
+
+<!-- ==================================================
+     NATANAEL CANO
+================================================== -->
+
+<tr id="natanael">
+
+<td class="artista">
+
+<img src="natanael.jfif" alt="Natanael Cano">
+
+<h2>
+NATANAEL CANO
+</h2>
+
+<p>
+Cantante y compositor mexicano
+</p>
+
+</td>
+
+
+<td class="informacion">
+
+<h3>
+¿Quién es Natanael Cano?
+</h3>
+
+<p>
+Natanael Cano es un cantante y compositor
+mexicano originario de Hermosillo, Sonora.
+Es ampliamente asociado con el desarrollo y
+popularización de los corridos tumbados,
+una propuesta que combina elementos del
+corrido tradicional con influencias urbanas.
+</p>
+
+<p>
+Desde pequeño mostró interés por la música y
+comenzó a acercarse a la guitarra. Entre sus
+influencias se encuentra Ariel Camacho, cuya
+música tuvo importancia en su formación
+artística.
+</p>
+
+<h3>
+Inicios
+</h3>
+
+<p>
+Cano comenzó a publicar música durante su
+adolescencia. Uno de los primeros temas que
+ayudó a llamar la atención sobre su trabajo fue
+"El de los lentes Gucci". Posteriormente
+desarrolló una carrera vinculada con Rancho
+Humilde y comenzó a publicar proyectos
+relacionados con los corridos tumbados.
+</p>
+
+<h3>
+Importancia en los corridos tumbados
+</h3>
+
+<p>
+Natanael Cano es frecuentemente identificado
+como una figura central en la aparición y
+expansión de los corridos tumbados. Su propuesta
+tomó estructuras del corrido tradicional y las
+combinó con elementos del hip-hop, trap y otros
+sonidos urbanos.
+</p>
+
+<p>
+Esta combinación permitió que una nueva
+generación de oyentes se acercara a la música
+regional mexicana mediante producciones con una
+estética contemporánea.
+</p>
+
+<h3>
+Canciones destacadas
+</h3>
+
+<ul>
+
+<li>El de los lentes Gucci</li>
+<li>Soy el Diablo</li>
+<li>PRC</li>
+<li>Amor Tumbado</li>
+<li>El Drip</li>
+<li>AMG</li>
+
+</ul>
+
+<div class="datos">
+
+<p>
+<strong>Nombre artístico:</strong> Natanael Cano
+</p>
+
+<p>
+<strong>Lugar de origen:</strong> Hermosillo, Sonora
+</p>
+
+<p>
+<strong>País:</strong> México
+</p>
+
+<p>
+<strong>Género:</strong> Corridos tumbados
+</p>
+
+<p>
+<strong>Instrumento:</strong> Guitarra
+</p>
+
+</div>
+
+</td>
+
+
+<td class="video">
+
+<h3>
+VIDEO DE UNA CANCIÓN
+</h3>
+
+<a
+href="https://www.youtube.com/results?search_query=Natanael+Cano+AMG"
+target="_blank">
+
+▶ VER VIDEO DE NATANAEL CANO
+
+</a>
+
+</td>
+
+
+<td class="audio">
+
+<h3>
+AUDIO
+</h3>
+
+<audio controls>
+
+<source src="amg.mp3.mp3" type="audio/mpeg">
+
+Tu navegador no puede reproducir este audio.
+
+</audio>
+
+<p>
+Natanael Cano x Gabito Ballesteros x Peso Pluma - AMG
+</p>
+
+<a
+class="spotify"
+href="https://open.spotify.com/track/2h71oDcrdC60s4CIFYFxc2"
+target="_blank">
+
+<span>●</span>
+ESCUCHAR EN SPOTIFY
+
+</a>
+
+</td>
+
+
+<td class="radio">
+
+<h3>
+RADIO
+</h3>
+
+<div class="radio-box">
+
+<p>
+RADIO NATANAEL CANO
+</p>
+
+<a
+href="https://open.spotify.com/artist/0elWFr7TW8piilVRYJUe4P"
+target="_blank">
+
+ESCUCHAR NATANAEL CANO
+
+</a>
+
+</div>
+
+</td>
+
+</tr>
+
+
+
+<!-- ==================================================
+     JASIEL NÚÑEZ
+================================================== -->
+
+<tr id="jasiel">
+
+<td class="artista">
+
+<img src="jasiel.jfif" alt="Jasiel Núñez">
+
+<h2>
+JASIEL NÚÑEZ
+</h2>
+
+<p>
+Cantante, compositor y músico mexicano
+</p>
+
+</td>
+
+
+<td class="informacion">
+
+<h3>
+¿Quién es Jasiel Núñez?
+</h3>
+
+<p>
+Jasiel Núñez es un cantante y compositor
+mexicano originario de Guadalajara, Jalisco.
+Su propuesta está relacionada con los corridos
+tumbados y con la nueva generación de música
+regional mexicana.
+</p>
+
+<p>
+Además de interpretar canciones, Núñez se ha
+desarrollado como compositor. Su trabajo como
+escritor de canciones es una parte importante
+de su trayectoria y ha colaborado con diferentes
+artistas de la escena mexicana.
+</p>
+
+<h3>
+Inicios musicales
+</h3>
+
+<p>
+Núñez creció dentro de un entorno familiar
+relacionado con la música. Durante su juventud
+comenzó a compartir canciones y videos en
+internet, lo que contribuyó a que su trabajo
+llegara a nuevos oyentes.
+</p>
+
+<h3>
+Relación con Peso Pluma
+</h3>
+
+<p>
+Una parte importante de su trayectoria está
+relacionada con Peso Pluma. Ambos han
+colaborado en canciones como "Lagunas" y
+"Rosa Pastel", y Núñez también participó como
+compositor en trabajos vinculados con la
+producción musical de Peso Pluma.
+</p>
+
+<p>
+Su asociación profesional con Double P Records
+también se convirtió en una etapa importante
+de su carrera.
+</p>
+
+<h3>
+Estilo musical
+</h3>
+
+<ul>
+
+<li>Corridos tumbados</li>
+<li>Música regional mexicana</li>
+<li>Guitarra y composición</li>
+<li>Influencias de Ariel Camacho</li>
+<li>Elementos urbanos</li>
+
+</ul>
+
+<h3>
+Canciones y colaboraciones
+</h3>
+
+<ul>
+
+<li>Lagunas</li>
+<li>Rosa Pastel</li>
+<li>Bipolar</li>
+<li>Corazón Frío</li>
+<li>Qué Loco Es</li>
+<li>Lujo y Detalle</li>
+
+</ul>
+
+<div class="datos">
+
+<p>
+<strong>Nombre artístico:</strong> Jasiel Núñez
+</p>
+
+<p>
+<strong>Lugar de origen:</strong> Guadalajara, Jalisco
+</p>
+
+<p>
+<strong>País:</strong> México
+</p>
+
+<p>
+<strong>Género:</strong> Corridos tumbados
+</p>
+
+<p>
+<strong>Instrumentos:</strong> Voz y guitarra
+</p>
+
+<p>
+<strong>Actividad:</strong> Cantante y compositor
+</p>
+
+</div>
+
+</td>
+
+
+<td class="video">
+
+<h3>
+VIDEO DE UNA CANCIÓN
+</h3>
+
+<a
+href="https://www.youtube.com/results?search_query=Jasiel+Nuñez+Japon"
+target="_blank">
+
+▶ VER VIDEO DE JASIEL NÚÑEZ
+
+</a>
+
+</td>
+
+
+<td class="audio">
+
+<h3>
+AUDIO
+</h3>
+
+<audio controls>
+
+<source src="japon.mp3.mp3" type="audio/mpeg">
+
+Tu navegador no puede reproducir este audio.
+
+</audio>
+
+<p>
+Jasiel Núñez - Japón
+</p>
+
+<a
+class="spotify"
+href="https://open.spotify.com/search/Jasiel%20Nu%C3%B1ez%20Jap%C3%B3n"
+target="_blank">
+
+<span>●</span>
+ESCUCHAR EN SPOTIFY
+
+</a>
+
+</td>
+
+
+<td class="radio">
+
+<h3>
+RADIO
+</h3>
+
+<div class="radio-box">
+
+<p>
+RADIO JASIEL NÚÑEZ
+</p>
+
+<a
+href="https://open.spotify.com/artist/0T8Ix53aIN4F7aEKj4EnKy"
+target="_blank">
+
+ESCUCHAR JASIEL NÚÑEZ
+
+</a>
+
+</div>
+
+</td>
+
+</tr>
+
+
+</tbody>
+
+</table>
+
+
+
+<section class="informacion-general">
+
+<h2>
+🎼 Sobre los corridos tumbados
+</h2>
+
+<p>
+Los corridos tumbados forman parte de una evolución
+contemporánea de la música regional mexicana. El estilo
+conserva elementos tradicionales del corrido, como el
+uso de guitarras y la narración de historias, pero
+incorpora recursos relacionados con géneros urbanos.
+</p>
+
+<p>
+Artistas como Natanael Cano, Junior H, Peso Pluma y
+Jasiel Núñez forman parte de una generación que ha
+utilizado diferentes plataformas digitales para
+distribuir música y conectar con nuevas audiencias.
+</p>
+
+<p>
+Aunque cada artista tiene una trayectoria diferente,
+los cuatro comparten una relación con la evolución
+reciente de la música mexicana y con la incorporación
+de elementos contemporáneos en la producción,
+composición e interpretación.
+</p>
+
+</section>
+
+
+
+<div class="botones-finales">
+
+<a class="boton-final" href="#junior">
+Junior H
+</a>
+
+<a class="boton-final" href="#peso">
+Peso Pluma
+</a>
+
+<a class="boton-final" href="#natanael">
+Natanael Cano
+</a>
+
+<a class="boton-final" href="#jasiel">
+Jasiel Núñez
+</a>
+
+<a
+class="boton-final"
+href="https://open.spotify.com/"
+target="_blank">
+
+Spotify
+
+</a>
+
+<a
+class="boton-final"
+href="https://www.youtube.com/"
+target="_blank">
+
+YouTube
+
+</a>
+
+</div>
+
+</div>
+
+
+<footer>
+
+<p>
+🎵 Página de mis artistas favoritos 🎵
+</p>
+
+<p>
+Proyecto realizado trabajo
+</p>
+
+<p>
+Junior H | Peso Pluma | Natanael Cano | Jasiel Núñez
+</p>
+
+</footer>
+
+
+</body>
+
+</html>
+<CENTER>
+    <A HREF="Formulario.html">
+        <FONT COLOR="White" SIZE="4" FACE="Arial">
+         <B>Formulario</B>
+        </FONT>
+    </A>
+</CENTER>

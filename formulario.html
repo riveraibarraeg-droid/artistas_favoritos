@@ -1,0 +1,1955 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Práctica 7 - Formularios HTML</title>
+
+
+    <style>
+
+        /* =====================================================
+           ESTILOS GENERALES
+           ===================================================== */
+
+        * {
+            box-sizing: border-box;
+        }
+
+
+        body {
+            margin: 0;
+            padding: 30px;
+
+            font-family: Arial, Helvetica, sans-serif;
+
+            background-color: #eeeeee;
+
+            color: #222222;
+        }
+
+
+        /* =====================================================
+           CONTENEDOR PRINCIPAL
+           ===================================================== */
+
+        .contenedor {
+
+            width: 850px;
+
+            max-width: 100%;
+
+            margin: auto;
+
+            background-color: white;
+
+            padding: 30px;
+
+            border: 1px solid #888888;
+
+            border-radius: 12px;
+
+            box-shadow:
+                0 4px 15px rgba(0, 0, 0, 0.20);
+        }
+
+
+        /* =====================================================
+           ENCABEZADO
+           ===================================================== */
+
+        h1 {
+
+            text-align: center;
+
+            margin-top: 0;
+
+            color: #333333;
+
+            font-size: 30px;
+        }
+
+
+        .descripcion {
+
+            text-align: center;
+
+            color: #666666;
+
+            margin-bottom: 25px;
+        }
+
+
+        /* =====================================================
+           SECCIONES
+           ===================================================== */
+
+        fieldset {
+
+            border: 2px solid #777777;
+
+            border-radius: 10px;
+
+            padding: 25px;
+
+            margin-bottom: 20px;
+        }
+
+
+        legend {
+
+            font-size: 21px;
+
+            font-weight: bold;
+
+            padding: 0 10px;
+
+            color: #333333;
+        }
+
+
+        .titulo {
+
+            font-size: 17px;
+
+            font-weight: bold;
+
+            margin-top: 18px;
+
+            margin-bottom: 10px;
+        }
+
+
+        .ayuda {
+
+            color: #666666;
+
+            font-size: 14px;
+
+            margin-top: -5px;
+
+            margin-bottom: 10px;
+        }
+
+
+        /* =====================================================
+           CAMPOS DE TEXTO
+           ===================================================== */
+
+        .campo {
+
+            margin-bottom: 17px;
+        }
+
+
+        .campo label {
+
+            display: block;
+
+            font-weight: bold;
+
+            margin-bottom: 6px;
+        }
+
+
+        .campo input {
+
+            width: 100%;
+
+            padding: 10px;
+
+            font-size: 15px;
+
+            border: 1px solid #888888;
+
+            border-radius: 5px;
+        }
+
+
+        /* =====================================================
+           SELECT
+           ===================================================== */
+
+        select {
+
+            width: 300px;
+
+            max-width: 100%;
+
+            padding: 10px;
+
+            border: 1px solid #888888;
+
+            border-radius: 5px;
+
+            background-color: white;
+
+            font-size: 15px;
+        }
+
+
+        /* =====================================================
+           SELECT MÚLTIPLE
+           ===================================================== */
+
+        select[multiple] {
+
+            width: 350px;
+
+            height: 150px;
+
+            padding: 5px;
+        }
+
+
+        /* =====================================================
+           TEXTAREA
+           ===================================================== */
+
+        textarea {
+
+            width: 100%;
+
+            height: 120px;
+
+            padding: 10px;
+
+            resize: vertical;
+
+            font-family: Arial, Helvetica, sans-serif;
+
+            font-size: 15px;
+
+            border: 1px solid #888888;
+
+            border-radius: 5px;
+        }
+
+
+        /* =====================================================
+           RADIO BUTTONS
+           ===================================================== */
+
+        .radio-grupo {
+
+            display: flex;
+
+            flex-wrap: wrap;
+
+            gap: 15px;
+
+            margin-bottom: 10px;
+        }
+
+
+        .radio-grupo label {
+
+            cursor: pointer;
+        }
+
+
+        /* =====================================================
+           CHECKBOXES
+           ===================================================== */
+
+        .checkbox-grupo {
+
+            display: grid;
+
+            grid-template-columns:
+                repeat(2, 1fr);
+
+            gap: 10px;
+
+            margin-bottom: 10px;
+        }
+
+
+        .checkbox-grupo label {
+
+            cursor: pointer;
+        }
+
+
+        input[type="checkbox"],
+        input[type="radio"] {
+
+            cursor: pointer;
+        }
+
+
+        /* =====================================================
+           BOTONES
+           ===================================================== */
+
+        .botones {
+
+            text-align: center;
+
+            margin-top: 25px;
+        }
+
+
+        button {
+
+            padding: 12px 30px;
+
+            margin: 5px;
+
+            border-radius: 6px;
+
+            border: 1px solid #555555;
+
+            font-size: 16px;
+
+            cursor: pointer;
+        }
+
+
+        .btn-enviar {
+
+            background-color: #333333;
+
+            color: white;
+        }
+
+
+        .btn-borrar {
+
+            background-color: #dddddd;
+
+            color: #222222;
+        }
+
+
+        .btn-nuevo {
+
+            background-color: #555555;
+
+            color: white;
+        }
+
+
+        button:hover {
+
+            opacity: 0.80;
+        }
+
+
+        /* =====================================================
+           RESULTADO
+           ===================================================== */
+
+        #resultado {
+
+            display: none;
+
+            margin-top: 25px;
+
+            padding: 25px;
+
+            background-color: #f5f5f5;
+
+            border: 2px solid #555555;
+
+            border-radius: 10px;
+        }
+
+
+        #resultado h2 {
+
+            margin-top: 0;
+
+            color: #333333;
+        }
+
+
+        .exito {
+
+            font-weight: bold;
+
+            margin-bottom: 20px;
+        }
+
+
+        .resultado-seccion {
+
+            margin-bottom: 20px;
+
+            padding-bottom: 15px;
+
+            border-bottom: 1px solid #cccccc;
+        }
+
+
+        .resultado-seccion:last-child {
+
+            border-bottom: none;
+        }
+
+
+        .resultado-seccion h3 {
+
+            margin-bottom: 10px;
+
+            color: #444444;
+        }
+
+
+        .resultado-seccion p {
+
+            margin: 7px 0;
+
+            line-height: 1.5;
+        }
+
+
+        /* =====================================================
+           MENSAJES DE ERROR
+           ===================================================== */
+
+        .error {
+
+            display: none;
+
+            color: #b00020;
+
+            font-size: 14px;
+
+            margin-top: 5px;
+        }
+
+
+        /* =====================================================
+           CAMPOS REQUERIDOS
+           ===================================================== */
+
+        .obligatorio {
+
+            color: red;
+        }
+
+
+        /* =====================================================
+           DISEÑO RESPONSIVO
+           ===================================================== */
+
+        @media (max-width: 650px) {
+
+            body {
+
+                padding: 10px;
+            }
+
+
+            .contenedor {
+
+                padding: 15px;
+            }
+
+
+            fieldset {
+
+                padding: 15px;
+            }
+
+
+            .radio-grupo {
+
+                flex-direction: column;
+
+                gap: 8px;
+            }
+
+
+            .checkbox-grupo {
+
+                grid-template-columns: 1fr;
+            }
+
+
+            select {
+
+                width: 100%;
+            }
+
+
+            select[multiple] {
+
+                width: 100%;
+            }
+
+
+            button {
+
+                width: 100%;
+
+                margin: 5px 0;
+            }
+
+        }
+
+    </style>
+
+</head>
+
+
+<body>
+
+
+<div class="contenedor">
+
+
+    <!-- =====================================================
+         TÍTULO
+         ===================================================== -->
+
+    <h1>
+        FORMULARIO
+    </h1>
+
+
+    <p class="descripcion">
+
+        Práctica 7: Crea y checa el funcionamiento de un formulario
+
+    </p>
+
+
+    <!-- =====================================================
+         FORMULARIO
+         ===================================================== -->
+
+    <form id="formulario">
+
+
+        <!-- =================================================
+             DATOS PERSONALES
+             ================================================= -->
+
+        <fieldset>
+
+            <legend>
+                Datos personales
+            </legend>
+
+
+            <!-- NOMBRE -->
+
+            <div class="campo">
+
+                <label for="nombre">
+
+                    Nombre:
+                    <span class="obligatorio">*</span>
+
+                </label>
+
+
+                <input
+                    type="text"
+                    id="nombre"
+                    name="nombre"
+                    placeholder="Escribe tu nombre">
+
+
+            </div>
+
+
+            <!-- CONTRASEÑA -->
+
+            <div class="campo">
+
+                <label for="contrasena">
+
+                    Contraseña:
+
+                </label>
+
+
+                <input
+                    type="password"
+                    id="contrasena"
+                    name="contrasena"
+                    placeholder="Escribe una contraseña">
+
+
+                <p class="ayuda">
+
+                    La contraseña se muestra con asteriscos.
+
+                </p>
+
+            </div>
+
+
+            <!-- CORREO -->
+
+            <div class="campo">
+
+                <label for="correo">
+
+                    Correo electrónico:
+                    <span class="obligatorio">*</span>
+
+                </label>
+
+
+                <input
+                    type="email"
+                    id="correo"
+                    name="correo"
+                    placeholder="ejemplo@correo.com">
+
+
+                <div
+                    id="errorCorreo"
+                    class="error">
+
+                    Escribe un correo electrónico válido.
+
+                </div>
+
+            </div>
+
+
+            <!-- TELÉFONO -->
+
+            <div class="campo">
+
+                <label for="telefono">
+
+                    Teléfono:
+
+                </label>
+
+
+                <input
+                    type="tel"
+                    id="telefono"
+                    name="telefono"
+                    placeholder="Escribe tu teléfono">
+
+            </div>
+
+        </fieldset>
+
+
+        <!-- =================================================
+             CUESTIONARIO
+             ================================================= -->
+
+        <fieldset>
+
+            <legend>
+                Cuestionario
+            </legend>
+
+
+            <!-- NATURALEZA -->
+
+            <div class="titulo">
+
+                ¿Cuál es la naturaleza de tu comentario?
+
+                <span class="obligatorio">*</span>
+
+            </div>
+
+
+            <div class="radio-grupo">
+
+
+                <label>
+
+                    <input
+                        type="radio"
+                        name="naturaleza"
+                        value="Recomendación">
+
+                    Recomendación
+
+                </label>
+
+
+                <label>
+
+                    <input
+                        type="radio"
+                        name="naturaleza"
+                        value="Oferta de trabajo">
+
+                    Oferta de trabajo
+
+                </label>
+
+
+                <label>
+
+                    <input
+                        type="radio"
+                        name="naturaleza"
+                        value="Comunicación">
+
+                    Comunicación
+
+                </label>
+
+
+                <label>
+
+                    <input
+                        type="radio"
+                        name="naturaleza"
+                        value="Queja">
+
+                    Queja
+
+                </label>
+
+
+            </div>
+
+
+            <!-- EDUCACIÓN -->
+
+            <div class="titulo">
+
+                Educación
+
+                <span class="obligatorio">*</span>
+
+            </div>
+
+
+            <select
+                id="educacion"
+                name="educacion">
+
+
+                <option value="">
+
+                    Selecciona una opción
+
+                </option>
+
+
+                <option value="Básica">
+
+                    Básica
+
+                </option>
+
+
+                <option value="Secundaria">
+
+                    Secundaria
+
+                </option>
+
+
+                <option value="Preparatoria">
+
+                    Preparatoria
+
+                </option>
+
+
+                <option value="Técnica">
+
+                    Técnica
+
+                </option>
+
+
+                <option value="Universidad">
+
+                    Universidad
+
+                </option>
+
+
+            </select>
+
+
+            <!-- COMENTARIOS -->
+
+            <div class="titulo">
+
+                Comentarios
+
+                <span class="obligatorio">*</span>
+
+            </div>
+
+
+            <textarea
+                id="comentarios"
+                name="comentarios"
+                placeholder="Escribe aquí tus comentarios..."></textarea>
+
+
+        </fieldset>
+
+
+        <!-- =================================================
+             INTERESES
+             ================================================= -->
+
+        <fieldset>
+
+            <legend>
+                Mis intereses
+            </legend>
+
+
+            <div class="titulo">
+
+                ¿Cuáles son tus intereses?
+
+            </div>
+
+
+            <p class="ayuda">
+
+                Puedes seleccionar uno o varios intereses.
+
+            </p>
+
+
+            <div class="checkbox-grupo">
+
+
+                <label>
+
+                    <input
+                        type="checkbox"
+                        name="intereses"
+                        value="Programación">
+
+                    Programación
+
+                </label>
+
+
+                <label>
+
+                    <input
+                        type="checkbox"
+                        name="intereses"
+                        value="Videojuegos">
+
+                    Videojuegos
+
+                </label>
+
+
+                <label>
+
+                    <input
+                        type="checkbox"
+                        name="intereses"
+                        value="Música">
+
+                    Música
+
+                </label>
+
+
+                <label>
+
+                    <input
+                        type="checkbox"
+                        name="intereses"
+                        value="Tecnología">
+
+                    Tecnología
+
+                </label>
+
+
+                <label>
+
+                    <input
+                        type="checkbox"
+                        name="intereses"
+                        value="Deportes">
+
+                    Deportes
+
+                </label>
+
+
+                <label>
+
+                    <input
+                        type="checkbox"
+                        name="intereses"
+                        value="Fotografía">
+
+                    Fotografía
+
+                </label>
+
+
+                <label>
+
+                    <input
+                        type="checkbox"
+                        name="intereses"
+                        value="Cine">
+
+                    Cine
+
+                </label>
+
+
+                <label>
+
+                    <input
+                        type="checkbox"
+                        name="intereses"
+                        value="Lectura">
+
+                    Lectura
+
+                </label>
+
+
+            </div>
+
+
+            <!-- =============================================
+                 DEPORTES
+                 ============================================= -->
+
+            <div class="titulo">
+
+                ¿Qué deporte te gusta?
+
+            </div>
+
+
+            <div class="checkbox-grupo">
+
+
+                <label>
+
+                    <input
+                        type="checkbox"
+                        name="deportes"
+                        value="Basketball">
+
+                    Basketball
+
+                </label>
+
+
+                <label>
+
+                    <input
+                        type="checkbox"
+                        name="deportes"
+                        value="Fútbol">
+
+                    Fútbol
+
+                </label>
+
+
+                <label>
+
+                    <input
+                        type="checkbox"
+                        name="deportes"
+                        value="Hockey">
+
+                    Hockey
+
+                </label>
+
+
+                <label>
+
+                    <input
+                        type="checkbox"
+                        name="deportes"
+                        value="Rugby">
+
+                    Rugby
+
+                </label>
+
+
+                <label>
+
+                    <input
+                        type="checkbox"
+                        name="deportes"
+                        value="Voleibol">
+
+                    Voleibol
+
+                </label>
+
+
+                <label>
+
+                    <input
+                        type="checkbox"
+                        name="deportes"
+                        value="Esquí">
+
+                    Esquí
+
+                </label>
+
+
+            </div>
+
+
+        </fieldset>
+
+
+        <!-- =================================================
+             SELECCIÓN MÚLTIPLE
+             ================================================= -->
+
+        <fieldset>
+
+            <legend>
+                Selección múltiple
+            </legend>
+
+
+            <div class="titulo">
+
+                Selecciona las áreas que más te interesan
+
+            </div>
+
+
+            <p class="ayuda">
+
+                Para seleccionar varias opciones mantén presionada
+                la tecla Ctrl mientras haces clic.
+
+            </p>
+
+
+            <select
+                id="areas"
+                name="areas"
+                multiple>
+
+
+                <option value="Computación">
+
+                    Computación
+
+                </option>
+
+
+                <option value="Programación">
+
+                    Programación
+
+                </option>
+
+
+                <option value="Diseño web">
+
+                    Diseño web
+
+                </option>
+
+
+                <option value="Bases de datos">
+
+                    Bases de datos
+
+                </option>
+
+
+                <option value="Inteligencia artificial">
+
+                    Inteligencia artificial
+
+                </option>
+
+
+                <option value="Robótica">
+
+                    Robótica
+
+                </option>
+
+
+                <option value="Videojuegos">
+
+                    Videojuegos
+
+                </option>
+
+
+                <option value="Redes">
+
+                    Redes
+
+                </option>
+
+
+            </select>
+
+
+        </fieldset>
+
+
+        <!-- =================================================
+             FORMA DE COMUNICACIÓN
+             ================================================= -->
+
+        <fieldset>
+
+            <legend>
+                Comunicación
+            </legend>
+
+
+            <div class="titulo">
+
+                ¿Cómo puedo comunicarme contigo?
+
+            </div>
+
+
+            <div class="checkbox-grupo">
+
+
+                <label>
+
+                    <input
+                        type="checkbox"
+                        name="comunicacion"
+                        value="Correo electrónico">
+
+                    Comunicarme contigo vía correo electrónico
+
+                </label>
+
+
+                <label>
+
+                    <input
+                        type="checkbox"
+                        name="comunicacion"
+                        value="Teléfono">
+
+                    Comunicarme contigo vía teléfono
+
+                </label>
+
+
+            </div>
+
+
+        </fieldset>
+
+
+        <!-- =================================================
+             BOTONES
+             ================================================= -->
+
+        <div class="botones">
+
+
+            <button
+                type="submit"
+                class="btn-enviar">
+
+                Enviar
+
+            </button>
+
+
+            <button
+                type="reset"
+                class="btn-borrar">
+
+                Borrar
+
+            </button>
+
+
+        </div>
+
+
+    </form>
+
+
+    <!-- =====================================================
+         RESULTADO
+         ===================================================== -->
+
+    <div id="resultado">
+
+
+        <h2>
+            Resultado del formulario
+        </h2>
+
+
+        <div class="exito">
+
+            ✓ El formulario fue enviado correctamente.
+
+        </div>
+
+
+        <!-- DATOS PERSONALES -->
+
+        <div class="resultado-seccion">
+
+            <h3>
+                Datos personales
+            </h3>
+
+
+            <p>
+
+                <strong>
+                    Nombre:
+                </strong>
+
+                <span id="rNombre">
+                </span>
+
+            </p>
+
+
+            <p>
+
+                <strong>
+                    Correo electrónico:
+                </strong>
+
+                <span id="rCorreo">
+                </span>
+
+            </p>
+
+
+            <p>
+
+                <strong>
+                    Teléfono:
+                </strong>
+
+                <span id="rTelefono">
+                </span>
+
+            </p>
+
+
+        </div>
+
+
+        <!-- CUESTIONARIO -->
+
+        <div class="resultado-seccion">
+
+            <h3>
+                Cuestionario
+            </h3>
+
+
+            <p>
+
+                <strong>
+                    Naturaleza del comentario:
+                </strong>
+
+                <span id="rNaturaleza">
+                </span>
+
+            </p>
+
+
+            <p>
+
+                <strong>
+                    Educación:
+                </strong>
+
+                <span id="rEducacion">
+                </span>
+
+            </p>
+
+
+            <p>
+
+                <strong>
+                    Comentarios:
+                </strong>
+
+                <span id="rComentarios">
+                </span>
+
+            </p>
+
+
+        </div>
+
+
+        <!-- INTERESES -->
+
+        <div class="resultado-seccion">
+
+            <h3>
+                Intereses
+            </h3>
+
+
+            <p>
+
+                <strong>
+                    Intereses seleccionados:
+                </strong>
+
+                <span id="rIntereses">
+                </span>
+
+            </p>
+
+
+            <p>
+
+                <strong>
+                    Deportes:
+                </strong>
+
+                <span id="rDeportes">
+                </span>
+
+            </p>
+
+
+        </div>
+
+
+        <!-- ÁREAS -->
+
+        <div class="resultado-seccion">
+
+            <h3>
+                Áreas de interés
+            </h3>
+
+
+            <p>
+
+                <strong>
+                    Áreas seleccionadas:
+                </strong>
+
+                <span id="rAreas">
+                </span>
+
+            </p>
+
+
+        </div>
+
+
+        <!-- COMUNICACIÓN -->
+
+        <div class="resultado-seccion">
+
+            <h3>
+                Forma de comunicación
+            </h3>
+
+
+            <p>
+
+                <strong>
+                    Prefiero:
+                </strong>
+
+                <span id="rComunicacion">
+                </span>
+
+            </p>
+
+
+        </div>
+
+
+        <!-- NUEVO FORMULARIO -->
+
+        <div class="botones">
+
+
+            <button
+                type="button"
+                class="btn-nuevo"
+                id="nuevoFormulario">
+
+                Llenar otro formulario
+
+            </button>
+
+
+        </div>
+
+
+    </div>
+
+
+</div>
+
+
+<!-- =========================================================
+     JAVASCRIPT
+     ========================================================= -->
+
+<script>
+
+
+    /* =====================================================
+       OBTENER ELEMENTOS
+       ===================================================== */
+
+    const formulario =
+        document.getElementById("formulario");
+
+
+    const resultado =
+        document.getElementById("resultado");
+
+
+    const errorCorreo =
+        document.getElementById("errorCorreo");
+
+
+    const botonNuevo =
+        document.getElementById("nuevoFormulario");
+
+
+    /* =====================================================
+       FUNCIÓN PARA OBTENER CHECKBOXES
+       ===================================================== */
+
+    function obtenerSeleccionados(nombre) {
+
+
+        const elementos =
+            document.querySelectorAll(
+                'input[name="' + nombre + '"]:checked'
+            );
+
+
+        let valores = [];
+
+
+        elementos.forEach(function(elemento) {
+
+            valores.push(elemento.value);
+
+        });
+
+
+        return valores;
+
+    }
+
+
+    /* =====================================================
+       FUNCIÓN PARA OBTENER SELECT MÚLTIPLE
+       ===================================================== */
+
+    function obtenerAreas() {
+
+
+        const select =
+            document.getElementById("areas");
+
+
+        let valores = [];
+
+
+        for (
+            let i = 0;
+            i < select.options.length;
+            i++
+        ) {
+
+
+            if (select.options[i].selected) {
+
+
+                valores.push(
+                    select.options[i].value
+                );
+
+            }
+
+        }
+
+
+        return valores;
+
+    }
+
+
+    /* =====================================================
+       FUNCIÓN PARA MOSTRAR INFORMACIÓN
+       ===================================================== */
+
+    function mostrar(elemento, valor) {
+
+
+        if (
+            valor === "" ||
+            valor.length === 0
+        ) {
+
+            elemento.textContent =
+                "No especificado";
+
+        } else {
+
+            if (Array.isArray(valor)) {
+
+                elemento.textContent =
+                    valor.join(", ");
+
+            } else {
+
+                elemento.textContent =
+                    valor;
+
+            }
+
+        }
+
+    }
+
+
+    /* =====================================================
+       ENVIAR FORMULARIO
+       ===================================================== */
+
+    formulario.addEventListener(
+        "submit",
+        function(event) {
+
+
+            /*
+             * EVITA QUE EL NAVEGADOR
+             * CAMBIE DE PÁGINA
+             */
+
+            event.preventDefault();
+
+
+            /* =========================================
+               OBTENER NATURALEZA
+               ========================================= */
+
+            const naturaleza =
+                document.querySelector(
+                    'input[name="naturaleza"]:checked'
+                );
+
+
+            if (!naturaleza) {
+
+
+                alert(
+                    "Selecciona la naturaleza de tu comentario."
+                );
+
+
+                return;
+
+            }
+
+
+            /* =========================================
+               OBTENER DATOS
+               ========================================= */
+
+            const nombre =
+                document.getElementById(
+                    "nombre"
+                ).value.trim();
+
+
+            const correo =
+                document.getElementById(
+                    "correo"
+                ).value.trim();
+
+
+            const telefono =
+                document.getElementById(
+                    "telefono"
+                ).value.trim();
+
+
+            const educacion =
+                document.getElementById(
+                    "educacion"
+                ).value;
+
+
+            const comentarios =
+                document.getElementById(
+                    "comentarios"
+                ).value.trim();
+
+
+            /* =========================================
+               VALIDAR NOMBRE
+               ========================================= */
+
+            if (nombre === "") {
+
+
+                alert(
+                    "Escribe tu nombre."
+                );
+
+
+                document
+                    .getElementById("nombre")
+                    .focus();
+
+
+                return;
+
+            }
+
+
+            /* =========================================
+               VALIDAR EDUCACIÓN
+               ========================================= */
+
+            if (educacion === "") {
+
+
+                alert(
+                    "Selecciona tu nivel de educación."
+                );
+
+
+                return;
+
+            }
+
+
+            /* =========================================
+               VALIDAR COMENTARIOS
+               ========================================= */
+
+            if (comentarios === "") {
+
+
+                alert(
+                    "Escribe tus comentarios."
+                );
+
+
+                document
+                    .getElementById("comentarios")
+                    .focus();
+
+
+                return;
+
+            }
+
+
+            /* =========================================
+               VALIDAR CORREO
+               ========================================= */
+
+            const expresionCorreo =
+                /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+
+
+            if (
+                !expresionCorreo.test(correo)
+            ) {
+
+
+                errorCorreo.style.display =
+                    "block";
+
+
+                document
+                    .getElementById("correo")
+                    .focus();
+
+
+                return;
+
+            }
+
+
+            errorCorreo.style.display =
+                "none";
+
+
+            /* =========================================
+               OBTENER INTERESES
+               ========================================= */
+
+            const intereses =
+                obtenerSeleccionados(
+                    "intereses"
+                );
+
+
+            /* =========================================
+               OBTENER DEPORTES
+               ========================================= */
+
+            const deportes =
+                obtenerSeleccionados(
+                    "deportes"
+                );
+
+
+            /* =========================================
+               OBTENER ÁREAS
+               ========================================= */
+
+            const areas =
+                obtenerAreas();
+
+
+            /* =========================================
+               OBTENER FORMA DE COMUNICACIÓN
+               ========================================= */
+
+            const comunicacion =
+                obtenerSeleccionados(
+                    "comunicacion"
+                );
+
+
+            /* =========================================
+               MOSTRAR RESULTADOS
+               ========================================= */
+
+            mostrar(
+
+                document.getElementById(
+                    "rNombre"
+                ),
+
+                nombre
+
+            );
+
+
+            mostrar(
+
+                document.getElementById(
+                    "rCorreo"
+                ),
+
+                correo
+
+            );
+
+
+            mostrar(
+
+                document.getElementById(
+                    "rTelefono"
+                ),
+
+                telefono
+
+            );
+
+
+            mostrar(
+
+                document.getElementById(
+                    "rNaturaleza"
+                ),
+
+                naturaleza.value
+
+            );
+
+
+            mostrar(
+
+                document.getElementById(
+                    "rEducacion"
+                ),
+
+                educacion
+
+            );
+
+
+            mostrar(
+
+                document.getElementById(
+                    "rComentarios"
+                ),
+
+                comentarios
+
+            );
+
+
+            mostrar(
+
+                document.getElementById(
+                    "rIntereses"
+                ),
+
+                intereses
+
+            );
+
+
+            mostrar(
+
+                document.getElementById(
+                    "rDeportes"
+                ),
+
+                deportes
+
+            );
+
+
+            mostrar(
+
+                document.getElementById(
+                    "rAreas"
+                ),
+
+                areas
+
+            );
+
+
+            mostrar(
+
+                document.getElementById(
+                    "rComunicacion"
+                ),
+
+                comunicacion
+
+            );
+
+
+            /* =========================================
+               MOSTRAR RESULTADO
+               ========================================= */
+
+            resultado.style.display =
+                "block";
+
+
+            /* =========================================
+               DESPLAZAR HACIA EL RESULTADO
+               ========================================= */
+
+            resultado.scrollIntoView({
+
+                behavior: "smooth",
+
+                block: "start"
+
+            });
+
+
+        }
+    );
+
+
+    /* =====================================================
+       BOTÓN BORRAR
+       ===================================================== */
+
+    formulario.addEventListener(
+        "reset",
+        function() {
+
+
+            setTimeout(
+                function() {
+
+
+                    resultado.style.display =
+                        "none";
+
+
+                    errorCorreo.style.display =
+                        "none";
+
+
+                },
+                50
+            );
+
+
+        }
+    );
+
+
+    /* =====================================================
+       BOTÓN LLENAR OTRO FORMULARIO
+       ===================================================== */
+
+    botonNuevo.addEventListener(
+        "click",
+        function() {
+
+
+            formulario.reset();
+
+
+            resultado.style.display =
+                "none";
+
+
+            errorCorreo.style.display =
+                "none";
+
+
+            window.scrollTo({
+
+                top: 0,
+
+                behavior: "smooth"
+
+            });
+
+
+        }
+    );
+
+
+</script>
+
+
+</body>
+
+</html>
